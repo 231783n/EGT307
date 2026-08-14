@@ -6,10 +6,6 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
-
-import pandas as pd
-import matplotlib.pyplot as plt
-
 import seaborn as sns
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import StratifiedShuffleSplit 
