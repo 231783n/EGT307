@@ -46,8 +46,8 @@ X_temperature_train, X_temperature_test, y_temperature_train, y_temperature_test
 
 
 
-print(f"Training set shape: {X_train.shape}")
-print(f"Testing set shape: {X_test.shape}")
+
+
 
 # Step 5: Build the Machine Learning Pipeline
 # Define the pipeline (includes preprocessing + RandomForest classifier)
