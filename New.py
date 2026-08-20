@@ -15,7 +15,7 @@ import sqlite3 #For saving and loading models
 # Step 2: Load and Prepare the Data
 # Load dataset
 
-df = pd.read_csv('.\clean_EGT209_T4_Group3_raw_data_wk3.csv')
+df = pd.read_csv('./clean_EGT209_T4_Group3_raw_data_wk3.csv')
 df = df.dropna()
 # Select relevant features
 
@@ -35,13 +35,13 @@ preprocessor = ColumnTransformer([
 
 # Step 4: Split Data into Training and Testing Sets
 # Define target and features
-p = df["temperature", "humidity"]
+p = df.temperature+ df.humidity
 
 
 # Split into training and testing sets (80% train, 20% test)
 X_train, X_test, y_train, y_test = train_test_split(p, df.air_quality , test_size=0.2, random_state=42)
-X_2train, X_2test, y_2train, y_2test = train_test_split([df.temperature,df.air_quality], df.humidity , test_size=0.2, random_state=42)
-X_temperature_train, X_temperature_test, y_temperature_train, y_temperature_test = train_test_split([df.air_quality,df.humidity ], df.temperature , test_size=0.2, random_state=42)
+X_2train, X_2test, y_2train, y_2test = train_test_split(df.temperature + df.air_quality, df.humidity , test_size=0.2, random_state=42)
+X_temperature_train, X_temperature_test, y_temperature_train, y_temperature_test = train_test_split(df.air_quality+ df.humidity , df.temperature , test_size=0.2, random_state=42)
 
 
 
@@ -77,7 +77,7 @@ y_pred = pipeline.predict(X_test)
 y_pred_2 = pipeline.predict(X_2test)
 y_pred2 = pipeline.predict(X_temperature_test)
 # Compute accuracy of the model
-accuracy = accuracy_score(y_test, y_predr)
+accuracy = accuracy_score(y_test, y_pred)
 print(f"Random Forest Model Accuracy: {accuracy:.2f}")
 
 # Step 8: Save and Load the Model
